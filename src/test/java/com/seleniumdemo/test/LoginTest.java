@@ -24,6 +24,6 @@ public class LoginTest extends BaseTest {
                 .loginUserInvalidData("test", "test")
                 .getLoginError();
 
-        Assert.assertTrue(loginUserInvalidData.getText().contains("Incorrect username or password"), "Expected text doesent't match");
+        Assert.assertTrue(loginUserInvalidData.getText().contains("Incorrect username or password"), "Expected text doesn't match");
     }
 }
