@@ -9,15 +9,20 @@ public class LoggedUserPage {
 
     private WebDriver driver;
 
-    @FindBy(xpath = "//a[text()='Logout']")
-    private WebElement entryTitle;
+    @FindBy(linkText = "Logout")
+    private WebElement logoutLink;
+
+    @FindBy(xpath = "//li[text()[contains(.,'account')]]")
+    private WebElement error;
 
     public LoggedUserPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public WebElement getEntryTitle(){
-        return entryTitle;
+    public WebElement getLogoutLink(){
+        return logoutLink;
     }
+
+    public WebElement getError(){return error;}
 }

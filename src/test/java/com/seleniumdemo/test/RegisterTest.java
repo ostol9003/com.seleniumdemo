@@ -9,13 +9,19 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void registerUserTest() {
+        int random = (int) (Math.random()*1000);
 
-        WebElement entryTitle = new HomePage(driver).openMyAccountPage()
-                .registerUser("test2@test.pl", "test@test.pl").getEntryTitle();
+        WebElement logoutLink = new HomePage(driver).openMyAccountPage()
+                .registerUser("test"+random+"@test.pl", "test@test.pl").getLogoutLink();
 
-        Assert.assertTrue(entryTitle.isDisplayed());
-        Assert.assertEquals(entryTitle.getText(), "Logout");
+        Assert.assertEquals(logoutLink.getText(), "Logout");
     }
+    @Test
+    public void registerUserWithSameEmailTest() {
+        WebElement logoutLink = new HomePage(driver).openMyAccountPage()
+                .registerUser("test@test.pl", "test@test.pl").getError();
 
+        Assert.assertTrue(logoutLink.getText().contains("account is already registered"));
+    }
 
 }

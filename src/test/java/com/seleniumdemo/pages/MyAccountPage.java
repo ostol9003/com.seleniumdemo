@@ -6,20 +6,24 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MyAccountPage {
-    @FindBy(id ="reg_email")
+    @FindBy(id = "reg_email")
     private WebElement regEmailInput;
 
-    @FindBy(id ="reg_password")
+    @FindBy(id = "reg_password")
     private WebElement regPasswordInput;
 
-    @FindBy(name ="register")
+    @FindBy(name = "register")
     private WebElement registerBtn;
+
+
     private WebDriver driver;
+
     public MyAccountPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public LoggedUserPage registerUser(String email,String password) {
+
+    public LoggedUserPage registerUser(String email, String password) {
         regEmailInput.sendKeys(email);
         regPasswordInput.sendKeys(password);
         registerBtn.click();
