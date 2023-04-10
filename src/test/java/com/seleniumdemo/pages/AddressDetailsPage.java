@@ -1,9 +1,9 @@
 package com.seleniumdemo.pages;
 
 import com.seleniumdemo.models.Customer;
+import com.seleniumdemo.utils.SeleniumHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -62,8 +62,8 @@ public class AddressDetailsPage {
         billingPhoneInput.sendKeys(customer.getPhone());
         billingEmailInput.sendKeys(customer.getEmail());
         orderCommentsInput.sendKeys(comments);
-        Actions act = new Actions(driver);
-        act.doubleClick(placeOrderButton).perform();
+        SeleniumHelper.waitForClickable(placeOrderButton,driver);
+        placeOrderButton.click();
         return new OrderDetailsPage(driver);
     }
 }
