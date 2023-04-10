@@ -16,7 +16,6 @@ public class LoginTest extends BaseTest {
 
         Assert.assertEquals(loginUserValidData.getText(), "Logout");
     }
-
     @Test
     public void loginInvalidDataTest() {
         WebElement loginUserInvalidData = new HomePage(driver)
